@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<h1>Welcome to your Orders</h1>
+<p th:text="'Welcome, ' + ${user.username} " />
+<table border="1">
+    <thead>
+    <th>
+        <tr> codice </tr>
+        <tr> data </tr>
+        <tr> prezzo </tr>
+    </th>
+    </thead>
+    <tbody>
+    <tr th:if="${ordini.empty}">
+        <td colspan="2"> No ordini Available </td>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td><span th:text="${ordini.codice}"></span></td>
+        <td><span th:text="${ordini.data}"/></span></td>
+        <td><span th:text="${ordini.prezzo}"></span></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/">go to login</a>
+</body>
+</html>

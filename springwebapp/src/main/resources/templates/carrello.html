@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+
+<h3>scegli un oggetto da aggiungere</h3>
+
+<select th:field="*{items}">
+    <option th:each="item : ${items}" th:text="${item.name}" th:value="${item.code}">
+</select>
+
+
+<button type="button" onclick="myFunction()">AGGIUNGI</button>
+
+<table border="1" id="myTable">
+    <thead>
+        <tr>
+            <th>codice</th>
+            <th>nome</th>
+            <th>prezzo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function myFunction() { var table = document.getElementById("myTable");
+    var row = table.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    cell1.innerHTML = codice;
+    cell2.innerHTML = nome;
+    cell2.innerHTML = prezzo;
+    }
+</script>
+
+
+</body>
+
+</html>

@@ -2,6 +2,7 @@ package it.javaproject.springwebapp.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class Ordine {
     private int codice;
@@ -12,11 +13,18 @@ public class Ordine {
     public Ordine() {
     }
 
-    public Ordine(int codice, Date data, List<Item> carrello) {
-        this.codice = codice;
+    public Ordine(Date data, List<Item> carrello) {
+        this.codice = generaCod();
         this.data = data;
         this.carrello = carrello;
         this.prezzo = calcolaPrezzo();
+    }
+
+    private int generaCod(){
+        Random rand = new Random();
+
+        // Obtain a number between [0 - 49].
+        return rand.nextInt(50);
     }
 
     public int getCodice() {

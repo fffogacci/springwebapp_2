@@ -12,12 +12,24 @@
 
 <h3>scegli un oggetto da aggiungere</h3>
 
-<select th:field="*{items}">
-    <option th:each="item : ${items}" th:text="${item.name}" th:value="${item.code}">
-</select>
+<form action="#" th:action="@{/gotoShopping}" th:object="${item}" method="get">
+    <select th:field="*{code}">
+        <option th:each="item : ${items}" th:text="${item.name}" th:value="${item.code}">
+    </select>
+    <input type="submit" value="aggiungi" />
+</form>
+<!--
+<form action="#" th:action="@{/aggiungiItem}" th:object="${item}" method="get">
+    <select th:field="*{code}">
+        <option th:each="item : ${items}" th:value="${item.code}"> <a th:text="${item.name}"/> - <a th:text="${item.price}"/></option>
+    </select>
+    <p><input type="submit" value="AGGIUNGI" /> <input type="reset" value="Reset" /></p>
+</form>-->
 
-
-<button type="button" onclick="myFunction()">AGGIUNGI</button>
+<!--<button type="button" th:attr="onclick=|myFunction('${item}')|">AGGIUNGI</button>-->
+<!--<button type="button" th:attr="onclick=|myFunction(\'' + ${items.item.getString('code')} +'\',\''+ ${items.item.getString('name')} + '\',\''+ ${items.item.getString('price')} + '\')|">AGGIUNGI</button>-->
+<!-- <button type="button" id="itempTmp" th:value="${item}" th:attr="onclick=|myFunction()|">AGGIUNGI</button>-->
+<!--<button type="button" th:attr="onclick=|myFunction([[${code}]],[[${name}]],[[${price}]])|">AGGIUNGI</button>-->
 
 <table border="1" id="myTable">
     <thead>
@@ -28,25 +40,16 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+    <tr th:each="item : ${shoppingTmp}">
+        <td><span th:text="${item.code}"></span></td>
+        <td><span th:text="${item.name}"></span></td>
+        <td><span th:text="${item.price}"></span></td>
+    </tr>
     </tbody>
 </table>
 
-<script>
-    function myFunction() { var table = document.getElementById("myTable");
-    var row = table.insertRow(0);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    cell1.innerHTML = codice;
-    cell2.innerHTML = nome;
-    cell2.innerHTML = prezzo;
-    }
-</script>
+
+<a th:href="@{/gestioneCarrello}"> salva carrello </a>
 
 
 </body>

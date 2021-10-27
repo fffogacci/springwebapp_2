@@ -1,32 +1,36 @@
-<!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
-<head>
-    <title>Getting Started: Handling Form Submission</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!DOCTYPE html>
 
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--<link rel="stylesheet" type="text/css" media="all"
+          href="../../../css/gtvg.css" th:href="@{/css/gtvg.css}" />-->
 </head>
+
 <body>
-<h1>Welcome to your Orders</h1>
-<p th:text="'Welcome, ' + ${user.username} " />
-<table border="1">
-    <thead>
-    <th>
-        <tr> codice </tr>
-        <tr> data </tr>
-        <tr> prezzo </tr>
-    </th>
-    </thead>
-    <tbody>
-    <tr th:if="${ordini.empty}">
-        <td colspan="2"> No ordini Available </td>
+
+<h1>Order list</h1>
+
+<table>
+    <tr>
+        <th>DATE</th>
+        <th>CUSTOMER</th>
+        <th>TOTAL</th>
+        <th></th>
     </tr>
-    <tr th:each="user : ${users}">
-        <td><span th:text="${ordini.codice}"></span></td>
-        <td><span th:text="${ordini.data}"/></span></td>
-        <td><span th:text="${ordini.prezzo}"></span></td>
+    <tr th:each="ordine : ${ordini}">
+        <td><span th:text="${ordine.codice}"></span></td>
+        <td><span th:text="${ordine.prezzo}"></span></td>
     </tr>
-    </tbody>
 </table>
-<a href="/">go to login</a>
+
+<p>
+    <a th:href="@{/dopoOrdine}"> ritorna Homepage </a>
+</p>
+
 </body>
+
 </html>
